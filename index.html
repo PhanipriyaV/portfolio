@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phanipriya Vangala — Senior Program Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0b0f1a;
+      --bg-card:    #111827;
+      --bg-raised:  #161d2e;
+      --border:     #1e2a42;
+      --border-mid: #263348;
+      --gold:       #c9a84c;
+      --gold-dim:   rgba(201,168,76,0.15);
+      --gold-line:  rgba(201,168,76,0.35);
+      --white:      #f0ece4;
+      --muted:      #8896a8;
+      --faint:      #3d4f66;
+      --body:       #b0bec8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11,15,26,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--gold); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 48px 80px;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(47,64,128,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; }
+    .hero-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+    .hero-kicker-line { width: 32px; height: 1px; background: var(--gold); }
+    .hero-kicker-text {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 900; line-height: 1.0;
+      color: var(--white); margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .hero-desc {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--muted); font-weight: 300;
+      max-width: 580px; line-height: 1.8; margin-bottom: 56px;
+    }
+    .hero-desc strong { color: var(--body); font-weight: 500; }
+    .hero-bottom {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; flex-wrap: wrap; gap: 40px;
+    }
+    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px; font-weight: 700;
+      color: var(--white); line-height: 1; margin-bottom: 4px;
+    }
+    .stat-number span { color: var(--gold); }
+    .stat-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--faint);
+    }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center;
+      padding: 12px 26px;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.2s;
+      border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+    }
+    .btn-gold { background: var(--gold); color: #0b0f1a; }
+    .btn-gold:hover { background: #d4b562; }
+    .btn-ghost {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border-mid);
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* SECTION */
+    section { padding: 100px 48px; border-bottom: 1px solid var(--border); }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .sec-label { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; }
+    .sec-label-line { width: 24px; height: 1px; background: var(--gold); }
+    .sec-label-text {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 700; color: var(--white);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .sec-title em { font-style: italic; color: var(--gold); }
+
+    /* ABOUT */
+    #about { background: var(--bg); }
+    .about-layout {
+      display: grid; grid-template-columns: 1fr 380px;
+      gap: 80px; margin-top: 56px;
+    }
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-style: italic; color: var(--white); line-height: 1.55;
+      border-left: 2px solid var(--gold);
+      padding-left: 28px; margin-bottom: 40px;
+    }
+    .about-text p {
+      font-size: 15px; color: var(--body);
+      line-height: 1.85; margin-bottom: 18px;
+      text-align: justify; hyphens: auto;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--white); font-weight: 500; }
+    .sidebar-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 28px; margin-bottom: 16px;
+    }
+    .sidebar-card:last-child { margin-bottom: 0; }
+    .sc-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .sc-value { font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.4; }
+    .sc-sub { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+    /* TIMELINE */
+    #timeline { background: var(--bg-raised); }
+    .timeline { margin-top: 56px; }
+    .tl-item {
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 40px; padding: 40px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .tl-item:last-child { border-bottom: 1px solid var(--border); }
+    .tl-item.current .tl-left::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--gold);
+    }
+    .tl-left { padding-left: 20px; }
+    .tl-period {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px; line-height: 1.4;
+    }
+    .tl-company { font-size: 13px; color: var(--muted); line-height: 1.4; }
+    .tl-role {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2vw, 22px); font-weight: 600;
+      color: var(--white); margin-bottom: 14px; line-height: 1.3;
+    }
+    .tl-desc {
+      font-size: 14px; color: var(--body);
+      line-height: 1.8; margin-bottom: 16px; max-width: 640px;
+      text-align: justify; hyphens: auto;
+    }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 4px 12px; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.05em; background: var(--bg-card);
+      color: var(--muted); border: 1px solid var(--border);
+    }
+    .tag-gold {
+      background: var(--gold-dim); color: var(--gold);
+      border-color: var(--gold-line);
+    }
+
+    /* PROJECTS */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      margin-top: 56px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+    }
+    .project-card {
+      background: var(--bg); padding: 36px 32px;
+      transition: background 0.2s; position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover { background: var(--bg-card); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px; font-weight: 700;
+      color: var(--border-mid); line-height: 1; margin-bottom: 20px;
+    }
+    .project-client {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .project-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 600;
+      color: var(--white); line-height: 1.35; margin-bottom: 14px;
+    }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .project-outcome {
+      font-size: 12px; font-weight: 500; color: var(--gold);
+      padding-top: 16px; border-top: 1px solid var(--border); line-height: 1.5;
+    }
+    .project-outcome::before { content: '\2192  '; }
+
+    /* STRENGTHS */
+    #strengths { background: var(--bg-raised); }
+    .strength-items {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border: 1px solid var(--border); margin-bottom: 56px;
+    }
+    .strength-item {
+      padding: 44px 36px; border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .strength-item:last-child { border-right: none; }
+    .strength-item:hover { background: var(--bg-card); }
+    .strength-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px; font-weight: 900;
+      color: var(--border-mid); line-height: 1; margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+    .strength-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 14px; line-height: 1.3; }
+    .strength-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .comp-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--faint); margin-bottom: 18px;
+    }
+    .competencies { display: flex; flex-wrap: wrap; gap: 8px; }
+    .comp-tag {
+      padding: 7px 14px; font-size: 12px; font-weight: 400;
+      color: var(--muted); background: var(--bg-card);
+      border: 1px solid var(--border); transition: all 0.15s; cursor: default;
+    }
+    .comp-tag:hover { color: var(--white); border-color: var(--border-mid); }
+
+    /* RECOGNITION */
+    #recognition { background: var(--bg); }
+    .recognition-layout {
+      margin-top: 56px; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 64px;
+    }
+    .rec-col-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+    }
+    .award-row {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 22px 0; border-top: 1px solid var(--border);
+    }
+    .award-row:first-of-type { border-top: none; padding-top: 0; }
+    .award-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 8px;
+    }
+    .award-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; line-height: 1.4; }
+    .award-sub { font-size: 12px; color: var(--muted); }
+    .cert-row {
+      display: flex; gap: 18px; align-items: flex-start;
+      padding: 20px 0; border-top: 1px solid var(--border);
+    }
+    .cert-row:first-of-type { border-top: none; padding-top: 0; }
+    .cert-box {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--bg-card); border: 1px solid var(--border-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.05em; color: var(--gold);
+    }
+    .cert-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; line-height: 1.4; }
+    .cert-issuer { font-size: 12px; color: var(--muted); }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg-raised); border-bottom: none;
+      text-align: center; padding: 120px 48px;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 64px); font-weight: 700;
+      color: var(--white); line-height: 1.15;
+      margin: 24px 0 16px; letter-spacing: -0.01em;
+    }
+    .contact-title em { color: var(--gold); font-style: italic; }
+    .contact-sub {
+      font-size: 15px; color: var(--muted);
+      max-width: 440px; margin: 0 auto 52px; line-height: 1.8;
+    }
+    .contact-sub { margin-bottom: 40px; }
+
+    /* CONTACT BUTTONS */
+    .contact-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 0; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 32px; font-size: 13px; font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      color: var(--body); background: var(--bg-card);
+      border: 1px solid var(--border); transition: all 0.2s; cursor: pointer;
+    }
+    .contact-btn:hover, .contact-btn.active { border-color: var(--gold); color: var(--gold); }
+
+    /* CONTACT FORM */
+    .contact-form-wrap {
+      max-width: 560px; margin: 40px auto 0; text-align: left;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+    }
+    .contact-form-wrap.open { max-height: 700px; opacity: 1; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .form-input, .form-textarea {
+      width: 100%; background: var(--bg-card); border: 1px solid var(--border-mid);
+      color: var(--white); font-family: 'Inter', sans-serif;
+      font-size: 14px; padding: 13px 16px; outline: none;
+      transition: border-color 0.2s; resize: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--faint); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-submit {
+      width: 100%; padding: 15px;
+      background: var(--gold); color: #0b0f1a;
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: background 0.2s; margin-top: 8px;
+    }
+    .form-submit:hover { background: #d4b562; }
+    .form-submit:disabled { background: var(--faint); cursor: not-allowed; }
+    .form-status {
+      margin-top: 20px; padding: 14px 18px;
+      font-size: 13px; font-weight: 500;
+      display: none; text-align: center;
+    }
+    .form-status.error {
+      display: block;
+      background: rgba(200,60,60,0.1);
+      border: 1px solid rgba(200,60,60,0.3);
+      color: #e07070;
+    }
+
+    /* CONTACT DETAILS — revealed after submit */
+    .contact-details {
+      max-width: 560px; margin: 40px auto 0;
+      display: none;
+      border: 1px solid var(--border-mid);
+      padding: 36px;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .contact-details-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .contact-detail-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 0; border-top: 1px solid var(--border);
+    }
+    .contact-detail-row:first-of-type { border-top: none; padding-top: 0; }
+    .contact-detail-icon { font-size: 16px; color: var(--gold); width: 20px; text-align: center; }
+    .contact-detail-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); width: 80px; flex-shrink: 0;
+    }
+    .contact-detail-value {
+      font-size: 14px; color: var(--white); font-weight: 500;
+    }
+    .contact-detail-value a { color: var(--white); text-decoration: none; }
+    .contact-detail-value a:hover { color: var(--gold); }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 28px 48px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-name { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--faint); }
+    .footer-right { font-size: 12px; color: var(--faint); }
+    .footer-right span { color: var(--gold); }
+
+    /* SCROLL PROGRESS */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 2px; background: var(--gold); width: 0%; transition: width 0.1s linear;
+    }
+
+    /* CURSOR GLOW */
+    #cursor-glow {
+      position: fixed; width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.045) 0%, transparent 70%);
+      pointer-events: none; z-index: 0; transform: translate(-50%, -50%);
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.05s; }
+    .stagger-2 { transition-delay: 0.12s; }
+    .stagger-3 { transition-delay: 0.19s; }
+    .stagger-4 { transition-delay: 0.26s; }
+    .stagger-5 { transition-delay: 0.33s; }
+    .stagger-6 { transition-delay: 0.40s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      section { padding: 72px 24px; }
+      #hero { padding: 100px 24px 64px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      .tl-item { grid-template-columns: 1fr; gap: 16px; }
+      .tl-left { padding-left: 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .strength-items { grid-template-columns: 1fr; }
+      .strength-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .strength-item:last-child { border-bottom: none; }
+      .recognition-layout { grid-template-columns: 1fr; gap: 48px; }
+      .hero-stats { gap: 32px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <div id="cursor-glow"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Phanipriya Vangala</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#timeline">Journey</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#strengths">Strengths</a></li>
+      <li><a href="#recognition">Recognition</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">
+        <div class="hero-kicker-line"></div>
+        <span class="hero-kicker-text">Senior Program Manager · PMP® · Bangalore, India</span>
+      </div>
+      <h1 class="hero-name">Phanipriya<br><em>Vangala</em></h1>
+      <p class="hero-desc">
+        17+ years leading <strong>digital transformation, supply chain, and retail technology</strong> programs. Former COO. IIM Bangalore Executive Education alum. Built teams, scaled businesses, and delivered programs that matter.
+      </p>
+      <div class="hero-bottom">
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number" data-count="17" data-suffix="+"><span class="count-num">0</span><span>+</span></div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-count="35" data-suffix=""><span class="count-num">0</span></div>
+            <div class="stat-label">Team Size Led</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-count="5" data-suffix=""><span class="count-num">0</span></div>
+            <div class="stat-label">Concurrent Programs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-count="15" data-suffix="yr"><span class="count-num">0</span><span>yr</span></div>
+            <div class="stat-label">Client Retention</div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-gold">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="sec-label">
+        <div class="sec-label-line"></div>
+        <span class="sec-label-text">About</span>
+      </div>
+      <h2 class="sec-title reveal">Program leader.<br>People builder.<br><em>Problem solver.</em></h2>
+      <div class="about-layout">
+        <div class="about-body">
+          <div class="about-quote">
+            "The satisfaction of initiating something and seeing it through to closure is something I have not found anywhere else."
+          </div>
+          <div class="about-text">
+            <p>
+              I started my career much like anyone else in technology. What changed my path was a simpler pull: I was more excited by <strong>why something needed to be built</strong> than by building it. That question led me toward business stakeholders, delivery teams, and eventually, to program management.
+            </p>
+            <p>
+              Over 17 years, I've led digital transformation across Retail, Supply Chain, Logistics, Commerce, and Media. Not as a specialist in any one domain, but as someone who believes that <strong>the skills of a great program manager travel well across industries</strong>.
+            </p>
+            <p>
+              As COO of Headrun Technologies, I played a crucial role in building the team to 85 professionals, sustained client relationships for up to 15 years, and led compliance certifications (ISO 9001 and ISO 27001) that put governance at the center of how we work.
+            </p>
+            <p>
+              What motivates me every day is purpose: knowing the work of a project team will <strong>eventually impact many lives</strong>. My proudest achievements aren't projects. They are the people I've worked alongside, and what they've gone on to do.
+            </p>
+          </div>
+        </div>
+        <div class="about-sidebar">
+          <div class="sidebar-card">
+            <div class="sc-label">Certification</div>
+            <div class="sc-value">PMP® · Project Management Professional</div>
+            <div class="sc-sub">PMI · Valid through 2029</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sc-label">Executive Education</div>
+            <div class="sc-value">Women in Leadership Programme</div>
+            <div class="sc-sub">Indian Institute of Management Bangalore · 2024</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sc-label">Education</div>
+            <div class="sc-value">B.Tech in Computer Science</div>
+            <div class="sc-sub">Acharya Nagarjuna University · First Class with Distinction</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sc-label">Recognition</div>
+            <div class="sc-value">Top 10 Women COOs in India</div>
+            <div class="sc-sub">September 2024</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sc-label">Languages</div>
+            <div class="sc-value">English · Telugu · Hindi · Kannada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="container">
+      <div class="sec-label">
+        <div class="sec-label-line"></div>
+        <span class="sec-label-text">Career Journey</span>
+      </div>
+      <h2 class="sec-title reveal">17 years of growth,<br><em>one role at a time.</em></h2>
+      <div class="timeline">
+
+        <div class="tl-item current reveal stagger-1">
+          <div class="tl-left">
+            <div class="tl-period">Aug 2025<br>Apr 2026</div>
+            <div class="tl-company">Rozana Rural Commerce · Bangalore</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-role">Engineering Program Manager</div>
+            <div class="tl-desc">Led program delivery for a rural commerce platform across engineering, operations, and compliance. Managed a 28-member cross-functional team across 4 to 5 parallel workstreams spanning CMS, OMS, warehouse, and category operations. Delivered the organization's first SOC 1 Type II and SOC 2 Type II compliance certifications end-to-end.</div>
+            <div class="tl-tags">
+              <span class="tag tag-gold">SOC 1 &amp; 2 Type II</span>
+              <span class="tag">28-member Org</span>
+              <span class="tag">Multi-workstream</span>
+              <span class="tag">CTO Partnership</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal stagger-2">
+          <div class="tl-left">
+            <div class="tl-period">Apr 2016<br>Aug 2025</div>
+            <div class="tl-company">Headrun Technologies · Bangalore</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-role">Chief Operating Officer · Head of Program Delivery</div>
+            <div class="tl-desc">Led delivery strategy and operational governance for a technology services firm serving Retail, Logistics, Supply Chain, Media, and eCommerce clients globally. Played a crucial role in building the team to 85 professionals delivering approximately USD 1M in annual revenue. Directed up to 5 concurrent client programs, personally hired 50+ professionals, and led ISO 9001 and ISO 27001 certifications. Maintained client relationships spanning 3 to 15 years.</div>
+            <div class="tl-tags">
+              <span class="tag tag-gold">COO</span>
+              <span class="tag">USD 350K+ Revenue</span>
+              <span class="tag">ISO 9001 · ISO 27001</span>
+              <span class="tag">50+ Hires</span>
+              <span class="tag">5 Concurrent Programs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal stagger-3">
+          <div class="tl-left">
+            <div class="tl-period">Mar 2015<br>Apr 2016</div>
+            <div class="tl-company">Headrun Technologies · Bangalore</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-role">Project Manager</div>
+            <div class="tl-desc">Led technology advisory and delivery efforts for a large logistics marketplace platform from concept through implementation, covering integration strategies and build-versus-buy recommendations. Delivered an enterprise metadata aggregation and content discovery platform supporting web, iOS, and Android ecosystems across global markets. Coordinated engineering, QA, and data teams across multiple delivery streams while managing stakeholder communication, project planning, and risk mitigation activities. Collaborated with clients, vendors, architects, and business stakeholders to align technical solutions with business objectives and delivery milestones.</div>
+            <div class="tl-tags">
+              <span class="tag">Technology Advisory</span>
+              <span class="tag">Build-vs-Buy</span>
+              <span class="tag">Multi-stream Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal stagger-4">
+          <div class="tl-left">
+            <div class="tl-period">Feb 2014<br>Mar 2015</div>
+            <div class="tl-company">Headrun Technologies · Bangalore</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-role">Development Team Lead</div>
+            <div class="tl-desc">Led cross-functional software delivery teams through iterative cycles. Introduced process improvements that raised throughput and reduced execution bottlenecks. Mentored engineers and coordinated development across multiple product initiatives.</div>
+            <div class="tl-tags">
+              <span class="tag">Team Leadership</span>
+              <span class="tag">Process Improvement</span>
+              <span class="tag">Mentoring</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal stagger-5">
+          <div class="tl-left">
+            <div class="tl-period">Feb 2009<br>Jan 2014</div>
+            <div class="tl-company">Tesco HSC · Bangalore</div>
+          </div>
+          <div class="tl-right">
+            <div class="tl-role">Associate SE &rarr; Software Engineer &rarr; Senior Software Engineer</div>
+            <div class="tl-desc">Led delivery for Tesco's large-scale JDA Intactix migration across the UK store network. Coordinated 40+ onshore and offshore stakeholders through multi-phase testing cycles. Spent 3 months onsite in the UK partnering with Space, Range, and Display business teams. Delivered a supply chain replenishment tracking platform and designed a lead-time framework that improved planning predictability across Tesco's store network.</div>
+            <div class="tl-tags">
+              <span class="tag tag-gold">Tesco Value Award &times;3</span>
+              <span class="tag">UK Onsite</span>
+              <span class="tag">JDA Intactix</span>
+              <span class="tag">Supply Chain</span>
+              <span class="tag">40+ Stakeholders</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="sec-label">
+        <div class="sec-label-line"></div>
+        <span class="sec-label-text">Key Programs</span>
+      </div>
+      <h2 class="sec-title reveal">Programs that<br><em>moved the needle.</em></h2>
+      <div class="projects-grid">
+
+        <div class="project-card reveal stagger-1">
+          <div class="project-num">01</div>
+          <div class="project-client">Arvind Lifestyle · Miebach India</div>
+          <div class="project-name">Apparel Replenishment System</div>
+          <div class="project-desc">End-to-end delivery of a fast-fashion replenishment platform handling inter-store transfers, DC-to-store movement, and production cycle initiation for brands including Flying Machine, Ed Hardy, Arrow, and GANT. Lean team of 7 over a 2-year lifecycle with hard operational time constraints.</div>
+          <div class="project-outcome">Won Project of the Year at Miebach Global, Germany.</div>
+        </div>
+
+        <div class="project-card reveal stagger-2">
+          <div class="project-num">02</div>
+          <div class="project-client">Boston-based Media &amp; Entertainment Org</div>
+          <div class="project-name">OTT Content &amp; Metadata Platform</div>
+          <div class="project-desc">End-to-end delivery of a catalog aggregation and deep-linking platform across NA and EU markets on web, iOS, and Android. All milestones met across a 1.5-year engagement.</div>
+          <div class="project-outcome">Client was subsequently acquired by a major media corporation.</div>
+        </div>
+
+        <div class="project-card reveal stagger-3">
+          <div class="project-num">03</div>
+          <div class="project-client">Rozana Rural Commerce · Bangalore</div>
+          <div class="project-name">Rural Commerce Platform</div>
+          <div class="project-desc">Managed delivery across 4 to 5 parallel workstreams (CMS, OMS, warehouse, category operations) for a rural commerce platform. Led a 28-member cross-functional team, partnering with the CTO to align priorities and execution plans.</div>
+          <div class="project-outcome">Delivered the organization's first SOC 1 Type II and SOC 2 Type II compliance certifications.</div>
+        </div>
+
+        <div class="project-card reveal stagger-4">
+          <div class="project-num">04</div>
+          <div class="project-client">Supply Chain Orchestration · Enterprise Client</div>
+          <div class="project-name">Supply Chain Visibility Platform</div>
+          <div class="project-desc">Led delivery of supply chain visibility data platforms supporting real-time logistics tracking, automated data collection and validation, and API-driven customer integrations. Concurrently managed alongside a 35-person team across two programs.</div>
+          <div class="project-outcome">Multi-program delivery with shared resources across competing timelines in a true Agile environment.</div>
+        </div>
+
+        <div class="project-card reveal stagger-5">
+          <div class="project-num">05</div>
+          <div class="project-client">Xperi · Content Intelligence</div>
+          <div class="project-name">ML-Assisted Metadata Enrichment System</div>
+          <div class="project-desc">Led delivery of an automated gap-fill system for movie and TV metadata. Involved ML model training across hundreds of multilingual websites, pattern-based duplicate detection, and editorial workflows with compliance guardrails. Two-year continuous improvement cycle.</div>
+          <div class="project-outcome">Year one: model training. Year two: accuracy improvement through systematic failure analysis.</div>
+        </div>
+
+        <div class="project-card reveal stagger-6">
+          <div class="project-num">06</div>
+          <div class="project-client">Worxogo (XogoNet)</div>
+          <div class="project-name">Gamified Supplier Performance Platform</div>
+          <div class="project-desc">Delivered a nudge-based supplier performance management platform across web, tablet, and mobile, driving measurable improvements in supplier KPI adherence and engagement through behavioral design and gamification mechanics.</div>
+          <div class="project-outcome">Measurable improvements in supplier KPI adherence and engagement across all channels post-launch.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="strengths">
+    <div class="container">
+      <div class="sec-label">
+        <div class="sec-label-line"></div>
+        <span class="sec-label-text">What I Bring</span>
+      </div>
+      <h2 class="sec-title">Three strengths.<br><em>Every engagement.</em></h2>
+      <div style="margin-top:56px;">
+        <div class="strength-items">
+          <div class="strength-item">
+            <div class="strength-num">01</div>
+            <div class="strength-title">People-First Leadership</div>
+            <div class="strength-desc">Taking care of your team is what drives the best project outcomes, not the other way around. This has been my operating principle since my first management role. My advice to any aspiring PM: "Take care of the team, and they will deliver the best outcomes for the project."</div>
+          </div>
+          <div class="strength-item">
+            <div class="strength-num">02</div>
+            <div class="strength-title">Cross-Functional Stakeholder Management</div>
+            <div class="strength-desc">From coordinating 40+ onshore and offshore stakeholders at Tesco to managing distributed teams across India, to being invited into a client's own governance calls, working across geographies, time zones, and functions is a constant, comfortable thread in my career.</div>
+          </div>
+          <div class="strength-item">
+            <div class="strength-num">03</div>
+            <div class="strength-title">Root-Cause Problem Solving</div>
+            <div class="strength-desc">I invest the time to understand why a problem exists before deciding how to fix it. Quick fixes resurface as the same issue in a different form. This discipline protects long-term delivery integrity and has been a differentiator across every engagement I've led.</div>
+          </div>
+        </div>
+        <div>
+          <div class="comp-title">Core Competencies</div>
+          <div class="competencies">
+            <span class="comp-tag">Program Governance</span>
+            <span class="comp-tag">Digital Transformation</span>
+            <span class="comp-tag">Supply Chain Technology</span>
+            <span class="comp-tag">Retail Systems</span>
+            <span class="comp-tag">Resource Planning</span>
+            <span class="comp-tag">Capacity Planning</span>
+            <span class="comp-tag">Risk Management</span>
+            <span class="comp-tag">Project Financial Management</span>
+            <span class="comp-tag">Agile · Scrum · Waterfall</span>
+            <span class="comp-tag">Technology Modernization</span>
+            <span class="comp-tag">Compliance Programs</span>
+            <span class="comp-tag">Stakeholder Management</span>
+            <span class="comp-tag">ISO 9001 · ISO 27001</span>
+            <span class="comp-tag">SOC 1 &amp; 2 Type II</span>
+            <span class="comp-tag">Pre-sales &amp; RFP</span>
+            <span class="comp-tag">Discovery Workshops</span>
+            <span class="comp-tag">Jira · Asana · Confluence</span>
+            <span class="comp-tag">eCommerce Platforms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section id="recognition">
+    <div class="container">
+      <div class="sec-label">
+        <div class="sec-label-line"></div>
+        <span class="sec-label-text">Recognition &amp; Credentials</span>
+      </div>
+      <h2 class="sec-title">Awards earned.<br><em>Standards upheld.</em></h2>
+      <div class="recognition-layout">
+        <div class="rec-col">
+          <div class="rec-col-title">Awards &amp; Honours</div>
+          <div class="award-row">
+            <div class="award-dot"></div>
+            <div>
+              <div class="award-name">Top 10 Women Chief Operating Officers in India</div>
+              <div class="award-sub">September 2024</div>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-dot"></div>
+            <div>
+              <div class="award-name">Project of the Year, Miebach Global</div>
+              <div class="award-sub">Miebach Consulting · Germany · Apparel Replenishment System</div>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-dot"></div>
+            <div>
+              <div class="award-name">Tesco Values Award &times;3</div>
+              <div class="award-sub">Tesco HSC · Space, Range &amp; Merchandising Systems</div>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-dot"></div>
+            <div>
+              <div class="award-name">Board of Studies Member, CS Department</div>
+              <div class="award-sub">Invited post-graduation to shape curriculum for the next generation of engineers</div>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-dot"></div>
+            <div>
+              <div class="award-name">Student President, ACE</div>
+              <div class="award-sub">Personality Development Consortium · Bapatla Engineering College</div>
+            </div>
+          </div>
+        </div>
+        <div class="rec-col">
+          <div class="rec-col-title">Certifications &amp; Education</div>
+          <div class="cert-row">
+            <div class="cert-box">PMP</div>
+            <div>
+              <div class="cert-name">Project Management Professional (PMP®)</div>
+              <div class="cert-issuer">PMI · Valid through 2029</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-box">IIM</div>
+            <div>
+              <div class="cert-name">Women in Leadership Programme</div>
+              <div class="cert-issuer">Indian Institute of Management Bangalore · Executive Education · 2024</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-box">BE</div>
+            <div>
+              <div class="cert-name">Bachelor of Engineering in Computer Science</div>
+              <div class="cert-issuer">Acharya Nagarjuna University · First Class with Distinction</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-box">GX</div>
+            <div>
+              <div class="cert-name">GrowthX®</div>
+              <div class="cert-issuer">January 2025</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-box">ISO</div>
+            <div>
+              <div class="cert-name">Compliance Leadership</div>
+              <div class="cert-issuer">ISO 9001 · ISO 27001 · SOC 1 Type II · SOC 2 Type II</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="sec-label" style="justify-content:center;">
+        <div class="sec-label-line"></div>
+        <span class="sec-label-text">Let's Connect</span>
+        <div class="sec-label-line"></div>
+      </div>
+      <div class="contact-title">Open to new<br><em>opportunities.</em></div>
+      <p class="contact-sub">
+        Looking to build inside an enterprise, taking on larger and more strategic programs. If you're working on something complex, let's talk.
+      </p>
+
+      <!-- Step 1: Buttons -->
+      <div class="contact-buttons">
+        <button class="contact-btn" onclick="showContactForm(this)">&#9993; Email</button>
+        <button class="contact-btn" onclick="showContactForm(this)">&#8599; LinkedIn</button>
+        <button class="contact-btn" onclick="showContactForm(this)">&#9743; Phone</button>
+      </div>
+
+      <!-- Step 2: Form (hidden until button clicked) -->
+      <div class="contact-form-wrap" id="contact-form-wrap">
+        <form id="contact-form">
+          <input type="hidden" name="_formspree_endpoint" value="https://formspree.io/f/xojzgpor" />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" name="name" class="form-input" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organization</label>
+              <input type="text" name="organization" class="form-input" placeholder="Company or organization" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Email</label>
+            <input type="email" name="email" class="form-input" placeholder="So I can write back" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-textarea" rows="4" placeholder="What are you working on?"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="form-btn">Send Message</button>
+          <div id="form-status" class="form-status"></div>
+        </form>
+      </div>
+
+      <!-- Step 3: Contact details (revealed after submit) -->
+      <div class="contact-details" id="contact-details">
+        <div class="contact-details-title">Here's how to reach me</div>
+        <div class="contact-detail-row">
+          <span class="contact-detail-icon">&#9993;</span>
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value"><a href="mailto:phanipriya.vangala@gmail.com">phanipriya.vangala@gmail.com</a></span>
+        </div>
+        <div class="contact-detail-row">
+          <span class="contact-detail-icon">&#8599;</span>
+          <span class="contact-detail-label">LinkedIn</span>
+          <span class="contact-detail-value"><a href="https://linkedin.com/in/phanipriya" target="_blank">linkedin.com/in/phanipriya</a></span>
+        </div>
+        <div class="contact-detail-row">
+          <span class="contact-detail-icon">&#9743;</span>
+          <span class="contact-detail-label">Phone</span>
+          <span class="contact-detail-value"><a href="tel:+919008897788">+91 9008897788</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Phanipriya Vangala, PMP®</span>
+    <span class="footer-right">Built on <span>clarity, delivery, and people</span> · Bangalore, India · 2026</span>
+  </footer>
+
+  <script>
+    // CONTACT — show form when button clicked
+    function showContactForm(clickedBtn) {
+      // Toggle active state on buttons
+      document.querySelectorAll('.contact-btn').forEach(b => b.classList.remove('active'));
+      clickedBtn.classList.add('active');
+      // Open form
+      const wrap = document.getElementById('contact-form-wrap');
+      wrap.classList.add('open');
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // CONTACT FORM — Formspree
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn      = document.getElementById('form-btn');
+      const status   = document.getElementById('form-status');
+      const endpoint = this.querySelector('[name="_formspree_endpoint"]').value;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.className = 'form-status';
+      status.style.display = 'none';
+
+      const data = new FormData(this);
+      data.delete('_formspree_endpoint');
+
+      try {
+        const res  = await fetch(endpoint, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        const json = await res.json();
+        if (res.ok) {
+          // Hide form, hide buttons, reveal contact details
+          document.getElementById('contact-form-wrap').classList.remove('open');
+          document.querySelector('.contact-buttons').style.display = 'none';
+          const details = document.getElementById('contact-details');
+          details.style.display = 'block';
+          details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          throw new Error((json.errors || []).map(e => e.message).join(', ') || 'Submission failed');
+        }
+      } catch (err) {
+        status.className = 'form-status error';
+        status.textContent = 'Something went wrong. Please try again or email directly.';
+        status.style.display = 'block';
+      }
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
+
+    // SCROLL PROGRESS BAR
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (scrolled / total * 100) + '%';
+    });
+
+    // CURSOR GLOW
+    const glow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
+
+    // ACTIVE NAV ON SCROLL
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => navObserver.observe(s));
+
+    // SCROLL REVEAL
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ANIMATED COUNTERS
+    const counters = document.querySelectorAll('[data-count]');
+    let countersStarted = false;
+    const heroObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !countersStarted) {
+        countersStarted = true;
+        counters.forEach(el => {
+          const target = parseInt(el.dataset.count);
+          const numEl = el.querySelector('.count-num');
+          const duration = 1400;
+          const start = performance.now();
+          const easeOut = t => 1 - Math.pow(1 - t, 3);
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            numEl.textContent = Math.round(easeOut(progress) * target);
+            if (progress < 1) requestAnimationFrame(update);
+            else numEl.textContent = target;
+          }
+          requestAnimationFrame(update);
+        });
+      }
+    }, { threshold: 0.5 });
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) heroObserver.observe(heroStats);
+
+    // 3D TILT ON PROJECT CARDS
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform = 'perspective(600px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg) translateY(-3px)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(600px) rotateY(0) rotateX(0) translateY(0)';
+      });
+    });
+
+    // STRENGTH NUMBER GOLD ON HOVER
+    document.querySelectorAll('.strength-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        item.querySelector('.strength-num').style.color = 'rgba(201,168,76,0.5)';
+      });
+      item.addEventListener('mouseleave', () => {
+        item.querySelector('.strength-num').style.color = 'var(--border-mid)';
+      });
+    });
+  </script>
+</body>
+</html>
