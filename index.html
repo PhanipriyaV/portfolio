@@ -86,8 +86,8 @@
       background: radial-gradient(circle, rgba(47,64,128,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-inner { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; }
-    .hero-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+    .hero-inner { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; text-align: center; }
+    .hero-kicker { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 40px; }
     .hero-kicker-line { width: 32px; height: 1px; background: var(--gold); }
     .hero-kicker-text {
       font-size: 11px; font-weight: 600;
@@ -105,14 +105,14 @@
     .hero-desc {
       font-size: clamp(15px, 1.8vw, 18px);
       color: var(--muted); font-weight: 300;
-      max-width: 580px; line-height: 1.8; margin-bottom: 56px;
+      max-width: 620px; line-height: 1.8; margin: 0 auto 56px;
     }
     .hero-desc strong { color: var(--body); font-weight: 500; }
     .hero-bottom {
-      display: flex; align-items: flex-end;
-      justify-content: space-between; flex-wrap: wrap; gap: 40px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 40px;
     }
-    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; justify-content: center; }
     .stat-number {
       font-family: 'Playfair Display', serif;
       font-size: 44px; font-weight: 700;
