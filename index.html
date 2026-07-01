@@ -568,7 +568,7 @@
       <div class="about-layout">
         <div class="about-body">
           <div class="about-quote">
-            "The satisfaction of initiating something and seeing it through to closure is something I have not found anywhere else."
+            "What I find most satisfying isn't the delivery. It's the thinking that happens before it. Working through the upstream and downstream impact of a decision, calibrating scope against constraints, figuring out how the pieces should come together before execution even begins. That part takes real, deliberate thought. And somewhere in that process, I almost always learn something from the people I'm working with: a perspective I hadn't considered, or a way of approaching a problem I hadn't tried."
           </div>
           <div class="about-text">
             <p>
@@ -953,41 +953,10 @@
         Looking to build inside an enterprise, taking on larger and more strategic programs. If you're working on something complex, let's talk.
       </p>
 
-      <!-- Step 1: Buttons -->
-      <div class="contact-buttons">
-        <button class="contact-btn" onclick="showContactForm(this)">&#9993; Email</button>
-        <button class="contact-btn" onclick="showContactForm(this)">&#8599; LinkedIn</button>
-        <button class="contact-btn" onclick="showContactForm(this)">&#9743; Phone</button>
+      <div style="text-align:center; margin-bottom: 0;">
+        <button class="btn btn-gold" onclick="toggleContactDetails(this)" id="contact-me-btn">Contact Me</button>
       </div>
 
-      <!-- Step 2: Form (hidden until button clicked) -->
-      <div class="contact-form-wrap" id="contact-form-wrap">
-        <form id="contact-form">
-          <input type="hidden" name="_formspree_endpoint" value="https://formspree.io/f/xojzgpor" />
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Your Name</label>
-              <input type="text" name="name" class="form-input" placeholder="Full name" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Organization</label>
-              <input type="text" name="organization" class="form-input" placeholder="Company or organization" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Your Email</label>
-            <input type="email" name="email" class="form-input" placeholder="So I can write back" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea name="message" class="form-textarea" rows="4" placeholder="What are you working on?"></textarea>
-          </div>
-          <button type="submit" class="form-submit" id="form-btn">Send Message</button>
-          <div id="form-status" class="form-status"></div>
-        </form>
-      </div>
-
-      <!-- Step 3: Contact details (revealed after submit) -->
       <div class="contact-details" id="contact-details">
         <div class="contact-details-title">Here's how to reach me</div>
         <div class="contact-detail-row">
@@ -1067,6 +1036,14 @@
       btn.disabled = false;
       btn.textContent = 'Send Message';
     });
+
+    // CONTACT ME TOGGLE
+    function toggleContactDetails(btn) {
+      const details = document.getElementById('contact-details');
+      const isOpen = details.style.display === 'block';
+      details.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? 'Contact Me' : 'Close';
+    }
 
     // SCROLL PROGRESS BAR
     const progressBar = document.getElementById('scroll-progress');
