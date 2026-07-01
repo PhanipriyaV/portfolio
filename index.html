@@ -985,58 +985,6 @@
   </footer>
 
   <script>
-    // CONTACT — show form when button clicked
-    function showContactForm(clickedBtn) {
-      // Toggle active state on buttons
-      document.querySelectorAll('.contact-btn').forEach(b => b.classList.remove('active'));
-      clickedBtn.classList.add('active');
-      // Open form
-      const wrap = document.getElementById('contact-form-wrap');
-      wrap.classList.add('open');
-      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    // CONTACT FORM — Formspree
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn      = document.getElementById('form-btn');
-      const status   = document.getElementById('form-status');
-      const endpoint = this.querySelector('[name="_formspree_endpoint"]').value;
-
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      status.className = 'form-status';
-      status.style.display = 'none';
-
-      const data = new FormData(this);
-      data.delete('_formspree_endpoint');
-
-      try {
-        const res  = await fetch(endpoint, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        const json = await res.json();
-        if (res.ok) {
-          // Hide form, hide buttons, reveal contact details
-          document.getElementById('contact-form-wrap').classList.remove('open');
-          document.querySelector('.contact-buttons').style.display = 'none';
-          const details = document.getElementById('contact-details');
-          details.style.display = 'block';
-          details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          throw new Error((json.errors || []).map(e => e.message).join(', ') || 'Submission failed');
-        }
-      } catch (err) {
-        status.className = 'form-status error';
-        status.textContent = 'Something went wrong. Please try again or email directly.';
-        status.style.display = 'block';
-      }
-      btn.disabled = false;
-      btn.textContent = 'Send Message';
-    });
-
     // CONTACT ME TOGGLE
     function toggleContactDetails(btn) {
       const details = document.getElementById('contact-details');
